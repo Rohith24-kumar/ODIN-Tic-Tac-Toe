@@ -1,16 +1,88 @@
-# React + Vite
+# Tic Tac Toe 🎮
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple, styled Tic Tac Toe game built with React + Vite. Players enter their names, take turns as X and O, and the game automatically detects wins and draws.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Player name input** – Enter custom names for Player 1 (X) and Player 2 (O)
+- **Start / Reset controls** – Board stays disabled until both names are entered and Start is clicked
+- **Turn indicator** – Shows whose turn it is by name, without shifting the layout
+- **Win detection** – Checks all 8 winning lines (rows, columns, diagonals) after every move
+- **Draw detection** – Flags a full board with no winner as a draw
+- **Styled marks** – X and O render in different colors and a larger font size
+- **Disabled-cell feedback** – Hovering a disabled cell shows a "not-allowed" cursor
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- Plain CSS (no framework)
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or later recommended)
+- npm
+
+### Installation
+
+```bash
+npm install
+```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173` by default.
+
+### Build for production
+
+```bash
+npm run build
+```
+
+Output is generated in the `dist/` folder.
+
+## Deployment
+
+This project deploys to [Vercel](https://vercel.com) with zero configuration:
+
+1. Push the project to a GitHub repo.
+2. On Vercel, click **Add New → Project** and select the repo.
+3. Vercel auto-detects the Vite build settings (`vite build` → `dist`).
+4. Click **Deploy**.
+
+Alternatively, deploy directly from the terminal:
+
+```bash
+npm install -g vercel
+vercel
+```
+
+## Project Structure
+
+```
+├── src/
+│   ├── App.jsx      # Main game component (state, logic, JSX)
+│   ├── App.css       # Styling
+│   └── main.jsx       # React entry point
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## How It Works
+
+- `board` — a 9-item array representing each cell (`'X'`, `'O'`, or `null`)
+- `isXNext` — tracks whose turn it is
+- `gameStarted` — disables/enables the grid
+- `winner` — set once a winning line is found; freezes the board
+- `calculateWinner()` — checks all winning line combinations after each move
+
+## License
+
+This project is free to use and modify for learning purposes.
